@@ -56,7 +56,6 @@ void Game::init()
     flush();
     ct = get_current_time();
     timer.timer_start();
-    rand_init();
     print();
     threads.push_back(std::thread(&Game::timing, this, std::move(this->prom.get_future())));
     this->play();
