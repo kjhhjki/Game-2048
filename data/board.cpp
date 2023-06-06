@@ -129,6 +129,7 @@ int Board::merge(int dir)
                     grid[i][s] <<= 1;
                     grid[i][s-dx] = 0;
                     _score += grid[i][s];
+                    _max = std::max(_max,grid[i][s]);
                     --_count;
                     ++res;
                 }
@@ -145,6 +146,7 @@ int Board::merge(int dir)
                     grid[s][i] <<= 1;
                     grid[s-dy][i] = 0;
                     _score += grid[s][i];
+                    _max = std::max(_max,grid[i][s]);
                     --_count;
                     ++res;
                 }
