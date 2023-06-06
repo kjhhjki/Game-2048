@@ -1,5 +1,5 @@
 # Game-2048
-The Object-Orented Programming term project.
+The term project of Object-Oriented Programming.
 Adaptable for both Linux and Windows.
 C++11 or above required.
 
