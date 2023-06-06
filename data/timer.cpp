@@ -33,7 +33,7 @@ std::string to_string(std::chrono::seconds t)
     std::string s;
     int x = t.count();
     s = std::to_string(x / 60) + ":";
-    s += to_string(x % 60,2,0);
+    s += to_string(x % 60,2,1);
     return s;
 }
 
