@@ -6,6 +6,7 @@ const static std::string border = "|-----|-----|-----|-----|";
 
 Board::Board()
 {
+    rand_init();
     _score = _max = _count = 0;
     for(int i = 0; i <= _length+1; ++i)
         for(int j = 0; j <= _length+1; ++j)
