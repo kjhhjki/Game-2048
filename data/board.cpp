@@ -87,13 +87,16 @@ void Board::move(int dir, int flag)
         for(int i = 1; i <= 4; ++i)
         {
             for(int s = ~dx?_length:1; ~dx?s:s<=_length; s -= dx)
-                while(grid[i][s+dx] == 0 && grid[i][s] && s+dx >= 1 && s+dx <= _length)
+            {
+                while(grid[i][s+dx] == 0 && grid[i][s] 
+                      && s+dx >= 1 && s+dx <= _length)
                 {
                     grid[i][s+dx] = grid[i][s];
                     grid[i][s] = 0;
                     s += dx;
                     ++cnt;
                 }
+            }
         }
     }
     else
@@ -102,7 +105,8 @@ void Board::move(int dir, int flag)
         for(int i = 1; i <= 4; ++i)
         {
             for(int s = ~dy?_length:1; ~dy?s:s<=_length; s -= dy)
-                while(grid[s+dy][i] == 0 && grid[s][i] && s+dy >= 1 && s+dy <= _length)
+                while(grid[s+dy][i] == 0 && grid[s][i]
+                      && s+dy >= 1 && s+dy <= _length)
                 {
                     grid[s+dy][i] = grid[s][i];
                     grid[s][i] = 0;
@@ -124,7 +128,8 @@ int Board::merge(int dir)
         for(int i = 1; i <= 4; ++i)
         {
             for(int s = ~dx?_length:1; ~dx?s:s<=_length; s -= dx)
-                if(grid[i][s] == grid[i][s-dx] && grid[i][s] && s-dx >= 1 && s-dx <= _length)
+                if(grid[i][s] == grid[i][s-dx] && grid[i][s] 
+                   && s-dx >= 1 && s-dx <= _length)
                 {
                     grid[i][s] <<= 1;
                     grid[i][s-dx] = 0;
@@ -141,7 +146,8 @@ int Board::merge(int dir)
         for(int i = 1; i <= 4; ++i)
         {
             for(int s = ~dy?_length:1; ~dy?s:s<=_length; s -= dy)
-                if(grid[s][i] == grid[s-dy][i] && grid[s][i] && s-dy >= 1 && s-dy <= _length)
+                if(grid[s][i] == grid[s-dy][i] && grid[s][i] 
+                   && s-dy >= 1 && s-dy <= _length)
                 {
                     grid[s][i] <<= 1;
                     grid[s-dy][i] = 0;
