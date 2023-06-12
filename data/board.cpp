@@ -105,6 +105,7 @@ void Board::move(int dir, int flag)
         for(int i = 1; i <= 4; ++i)
         {
             for(int s = ~dy?_length:1; ~dy?s:s<=_length; s -= dy)
+            {
                 while(grid[s+dy][i] == 0 && grid[s][i]
                       && s+dy >= 1 && s+dy <= _length)
                 {
@@ -113,6 +114,7 @@ void Board::move(int dir, int flag)
                     s += dy;
                     ++cnt;
                 }
+            }
         }
     }
     if(flag)        res = this->merge(dir); 
@@ -128,6 +130,7 @@ int Board::merge(int dir)
         for(int i = 1; i <= 4; ++i)
         {
             for(int s = ~dx?_length:1; ~dx?s:s<=_length; s -= dx)
+            {
                 if(grid[i][s] == grid[i][s-dx] && grid[i][s] 
                    && s-dx >= 1 && s-dx <= _length)
                 {
@@ -138,6 +141,7 @@ int Board::merge(int dir)
                     --_count;
                     ++res;
                 }
+            }
         }
     }
     else
@@ -146,6 +150,7 @@ int Board::merge(int dir)
         for(int i = 1; i <= 4; ++i)
         {
             for(int s = ~dy?_length:1; ~dy?s:s<=_length; s -= dy)
+            {
                 if(grid[s][i] == grid[s-dy][i] && grid[s][i] 
                    && s-dy >= 1 && s-dy <= _length)
                 {
@@ -156,6 +161,7 @@ int Board::merge(int dir)
                     --_count;
                     ++res;
                 }
+            }
         }
     }
     move(dir,0);
